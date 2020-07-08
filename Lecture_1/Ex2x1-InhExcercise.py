@@ -1,21 +1,27 @@
-class Dog :
+class Pet() :
     species = 'mammal'
 
-    def __init__(self, name, age):
+    def __init__(self, name, pet) :
         self.name = name
-        self.age = age
+        self.pet = pet
     
-    def description(self) :
-        return "{} is {} years old".format(self.name, self.age)
+    def description1(self) :
+        return "{} is {}.".format(self.name, self.pet)
 
-    def speak(self, sound) :
-        return "{} says {}".format(self.name, sound)
+    def description2(self, typepet) :
+        return "I have {} {}.".format(self.pet, typepet)
 
-class RussellTerrier(Dog) :
-    def run(self, speed) :
-        return '{} runs {}'.format(self.name , speed)
+I = Pet('I', 3)
+print(I.description2('dogs'))
 
-class Bulldog(Dog) :
-    def run(self, speed) :
-        return "{} runs {}".format(self.name, speed)
-        
+Tom = Pet('Tom', 6)
+print(Tom.description1())
+
+Fletcher = Pet('Fletcher', 7)
+print(Fletcher.description1())
+
+Larry = Pet('Larry', 9)
+print(Larry.description1())
+
+if Pet.species == 'mammal' :
+    print("And they're all mammals, of course.")
