@@ -1,4 +1,4 @@
-class employeel1() :
+class employee1() :
     def name(self) :
         print('Peter is his name')
     
@@ -8,7 +8,7 @@ class employeel1() :
     def age(self) :
         print('25 is his age')
     
-class employeel2() :
+class employee2() :
     def name(self) :
         print('Bob is his name')
     
@@ -23,8 +23,8 @@ def func(obj):
     obj.salary()
     obj.age()
 
-obj_emp1 = employeel1()
-obj_emp2 = employeel2()
+obj_emp1 = employee1()
+obj_emp2 = employee2()
 
 func(obj_emp1)
 func(obj_emp2)

@@ -19,10 +19,10 @@ class Bulldog(Dog) :
     def run(self, speed) :
         return "{} runs {}".format(self.name, speed)
 
-jin = Bulldog('Jin',12)
-print(jin.description())
-print(jin.run('slowly'))
-print(isinstance(jin, Dog))
+jim = Bulldog('Jin',12)
+print(jim.description())
+print(jim.run('slowly'))
+print(isinstance(jim, Dog))
 
 julie = Dog('Julie', 100)
 print(isinstance(julie, Dog))
@@ -30,5 +30,4 @@ print(isinstance(julie, Dog))
 johnwalker = RussellTerrier('Johny Walker', 4)
 print(isinstance(johnwalker, Bulldog))
 
-print(isinstance(julie, jin))
-
+print(isinstance(julie, jim))

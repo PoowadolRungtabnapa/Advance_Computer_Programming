@@ -1,0 +1,2 @@
+__str__ = แสดงค่าClassเองเลย
+isinstance(Obj, Class)
