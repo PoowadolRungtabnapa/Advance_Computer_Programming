@@ -3,7 +3,7 @@ import psycopg2
 def deletestudents(name) :
     try :
         connection = psycopg2.connect(user="postgres",
-                                    password="Mac126218",
+                                    password="Mac126254",
                                     host='127.0.0.1',
                                     port='5432',
                                     database='mydb')
@@ -23,7 +23,7 @@ def deletestudents(name) :
         postgresSQL_select_Query = "select * from students "
         cursor.execute(postgresSQL_select_Query, (name,))
         print("After Delete")
-        student_records = cursor.fellchall()
+        student_records = cursor.fetchall()
         for row in student_records :
             print(row, '\n')
 

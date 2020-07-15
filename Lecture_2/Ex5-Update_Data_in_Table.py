@@ -3,7 +3,7 @@ import psycopg2
 def updateEmail(name, new_email) :
     try :
         connection = psycopg2.connect(user="postgres",
-                                    password="Mac126218",
+                                    password="Mac126254",
                                     host='127.0.0.1',
                                     port='5432',
                                     database='mydb')
@@ -23,7 +23,7 @@ def updateEmail(name, new_email) :
         postgresSQL_select_Query = "select * from students where f_name = %s"
         cursor.execute(postgresSQL_select_Query, (name,))
         print("After Update")
-        student_records = cursor.fellchall()
+        student_records = cursor.fetchall()
         for row in student_records :
             print(row, '\n')
     except (Exception, psycopg2.Error) as error :
@@ -35,4 +35,4 @@ def updateEmail(name, new_email) :
             connection.close()
             print("PostgreSQL connection is closed")
 
-updateEmail('Poowadol', 's6206022610033@fitm.kmutnb.ac.th')
+updateEmail('Poowadol', 's6206022610033@email.kmutnb.ac.th')

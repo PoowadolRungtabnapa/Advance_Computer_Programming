@@ -10,11 +10,11 @@ try :
     
     cursor = connection.cursor()
     
-    create_table_query = '''CREATE TABLE Students
-            (student_id CHAR(13)    PRIMARY KEY,
-            f_name      VARCHAR(30) NOT NULL,
-            l_name      VARCHAR(30) NOT NULL,
-            e_mail      VARCHAR(50) );'''
+    create_table_query = '''CREATE TABLE Subjects
+            (subject_id   VARCHAR(15) PRIMARY KEY,
+            subject_name  VARCHAR(50) NOT NULL,
+            creadit       INTEGER NOT NULL,
+            teacher_id    CHAR(3) );'''
     
     cursor.execute(create_table_query)
     connection.commit()
