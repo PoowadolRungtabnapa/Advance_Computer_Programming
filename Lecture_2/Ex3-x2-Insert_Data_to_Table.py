@@ -9,17 +9,17 @@ try :
                                 
     cursor = connection.cursor()
 
-    postgres_insert_query = """ INSERT INTO students (student_id, f_name, l_name, e_mail) VALUES (%s,%s,%s,%s)"""
-    record_to_insert = ('6206022610022','Kanokwan',
-                        'Chuaibanrung',"s6206022610022@email.kmutnb.ac.th")
+    postgres_insert_query = """ INSERT INTO registration (student_id, subject_id, year, semester, grade) VALUES (%s,%s,%s,%s,%s)"""
+    record_to_insert = ('6206022610033','LabNetwork',
+                        3,"WKN")
     cursor.execute(postgres_insert_query, record_to_insert)
 
-    record_to_insert = ('6206022610011','Ti',
-                        'Wan',"s6206022610011@email.kmutnb.ac.th")
+    record_to_insert = ('060233112','DataEng',
+                        3,"STS")
     cursor.execute(postgres_insert_query, record_to_insert)
 
-    record_to_insert = ('6206022610044','Leo',
-                        'Komkam',"s6206022610044@email.kmutnb.ac.th")
+    record_to_insert = ('040203123','DisMath',
+                        3,"ACK")
     cursor.execute(postgres_insert_query, record_to_insert)
 
     connection.commit()

@@ -10,8 +10,8 @@ try :
     
     cursor = connection.cursor()
     
-    create_table_query = '''CREATE TABLE Students
-            (student_id CHAR(13)    PRIMARY KEY,
+    create_table_query = '''CREATE TABLE Teachers
+            (teacher_id CHAR(13)    PRIMARY KEY,
             f_name      VARCHAR(30) NOT NULL,
             l_name      VARCHAR(30) NOT NULL,
             e_mail      VARCHAR(50) );'''
