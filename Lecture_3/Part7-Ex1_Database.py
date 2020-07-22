@@ -1,10 +1,10 @@
 import psycopg2
 
 try :
-    connection = psycopg2.connect(user="",
-                                  password="",
-                                  host='',
-                                  port='',
+    connection = psycopg2.connect(user="webadmin",
+                                  password="XVBqxc19866",
+                                  host='node1449-testdb.app.ruk-com.cloud',
+                                  port='11025',
                                   database='postgres')
     
     connection.autocommit = True
