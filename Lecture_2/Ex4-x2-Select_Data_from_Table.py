@@ -1,38 +1,26 @@
 import psycopg2
 
-
 try :
     connection = psycopg2.connect(user="postgres",
-                                password="Mac126254",
-                                host='127.0.0.1',
-                                port='5432',
-                                database='mydb')
-
+                                  password="Mac126254",
+                                  host='127.0.0.1',
+                                  port='5432',
+                                  database='mydb')
+                                
     cursor = connection.cursor()
-    postgreSQL_select_Query = "select * from students"
 
-    cursor.execute(postgreSQL_select_Query)
-    print("Selecting rows from students table using cursor.fechall")
-    student_records = cursor.fetchmany(2)
-
-    print("Print 2 rows")
-    for row in student_records :
-        print(f"student_id = {row[0]}")
-        print(f"f_name = {row[1]}")
-        print(f"l_name = {row[2]}")
-        print(f"e_mail = {row[3],} \n")
+    postgres_insert_query = """ INSERT INTO subjects (subject_id, subject_name, creadit, teacher_id) VALUES (%s,%s,%s,%s)"""
+    record_to_insert = ('060233201','LabNetwork',
+                        3,"WKN")
+    cursor.execute(postgres_insert_query, record_to_insert)
     
-    student_records = cursor.fetchmany(2)
-
-    print("Print another 2 rows")
-    for row in student_records :
-        print(f"student_id = {row[0]}")
-        print(f"f_name = {row[1]}")
-        print(f"l_name = {row[2]}")
-        print(f"e_mail = {row[3],} \n")
+    connection.commit()
+    count = cursor.rowcount
+    print(count, 'record inserted succrssfully into students table')
 
 except (Exception, psycopg2.Error) as error :
-    print("Error while fetching data from PostgreSQL", error)
+    if(connection) :
+        print('Failed to insert record into students table',error)
 
 finally :
     if(connection) :

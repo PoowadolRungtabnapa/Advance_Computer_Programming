@@ -8,7 +8,7 @@ def index():
 
 @app.route('/sign')
 def sign() :
-    return render_template('sign6.html')
+    return render_template('sign.html')
 
 @app.route('/process',methods=['POST'])
 def process() :

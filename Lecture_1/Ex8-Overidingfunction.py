@@ -17,11 +17,12 @@ class example_class(Absclass) :
 
 test_obj = test_class()
 test_obj.task()
-test_obj.print(100)
 
+test_obj.print(100)
+'''
 example_obj = example_class()
 example_obj.task()
 example_obj.print(200)
 
 print("test_obj is instance of Absclass? ", isinstance(test_obj, Absclass))
-print('example_obj is instance of Absclass? ', isinstance(example_obj, Absclass))
+print('example_obj is instance of Absclass? ', isinstance(example_obj, Absclass))'''

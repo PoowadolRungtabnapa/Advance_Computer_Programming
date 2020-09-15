@@ -2,25 +2,18 @@ import psycopg2
 
 try :
     connection = psycopg2.connect(user="postgres",
-                                  password="Mac126254",
+                                  password="Mac126218",
                                   host='127.0.0.1',
                                   port='5432',
-                                  database='mydb')
+                                  database='test')
                                 
     cursor = connection.cursor()
 
-    postgres_insert_query = """ INSERT INTO students (student_id, f_name, l_name, e_mail) VALUES (%s,%s,%s,%s)"""
-    record_to_insert = ('6206022610022','Kanokwan',
-                        'Chuaibanrung',"s6206022610022@email.kmutnb.ac.th")
+    postgres_insert_query = """ INSERT INTO teachers (teacher_id, f_name, l_name, e_mail) VALUES (%s,%s,%s,%s)"""
+    record_to_insert = ('1','a',
+                        'b',"s6206022610022@email.kmutnb.ac.th")
     cursor.execute(postgres_insert_query, record_to_insert)
 
-    record_to_insert = ('6206022610011','Ti',
-                        'Wan',"s6206022610011@email.kmutnb.ac.th")
-    cursor.execute(postgres_insert_query, record_to_insert)
-
-    record_to_insert = ('6206022610044','Leo',
-                        'Komkam',"s6206022610044@email.kmutnb.ac.th")
-    cursor.execute(postgres_insert_query, record_to_insert)
 
     connection.commit()
     count = cursor.rowcount
