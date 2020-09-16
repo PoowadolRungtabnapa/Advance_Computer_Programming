@@ -10,8 +10,6 @@ class User(Base) :
     fullname = Column(String)
     nickname = Column(String)
 
-
     def __repr__(self):
         return "<User(name='%s', fullname='%s', nickname='%s')>" % (
-            self.name, self.fullname, self.nickname
-)
+            self.name, self.fullname, self.nickname)
