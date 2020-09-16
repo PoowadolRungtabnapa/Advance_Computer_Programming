@@ -3,7 +3,7 @@ from contextlib import contextmanager
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 import yaml
-from config import DATABASE_URI, f_yam
+from configs import DATABASE_URI, f_yam
 from models import Base, Book
 
 engine = create_engine(DATABASE_URI)

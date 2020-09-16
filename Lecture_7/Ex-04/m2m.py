@@ -47,8 +47,7 @@ class Order(Base) :
     id = Column(String(35), primary_key=True, unique=True)
     name = Column(String(80), nullable=False)
 
-    products = relationship(
-        "Product", secondary="order_product", viewonly=True)
+    products = relationship("Product", secondary="order_product", viewonly=True)
     def add_products(self, items) :
         for product, qty in items :
             self.order_products.append(Order_Product(
@@ -102,3 +101,7 @@ print(order1.order_products)
 
 print("Order_Products Array of prod1 :")
 print(prod1.order_products)
+
+Delete = session.query(Order).filter(Order.name=="First Order").first()
+session.delete(Delete)
+session.commit()

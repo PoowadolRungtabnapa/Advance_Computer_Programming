@@ -7,6 +7,6 @@ bps = s.query(Book.title, Book.author).all()
 for bp in bps :
     print('Title : ', bp.title)
     print('Author : ', bp.author)
-    print('_____'*20)
-    
+    print('____'*20)
+
 s.close()
