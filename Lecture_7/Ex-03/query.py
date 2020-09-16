@@ -1,4 +1,4 @@
-from Lecture_7.crud import Session
+from crud import Session
 from models import Book
 
 s = Session()
