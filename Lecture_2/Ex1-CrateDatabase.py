@@ -9,7 +9,7 @@ try :
 
     cursor = connection.cursor()
 
-    sql = """CREATE database mydb"""
+    sql = """CREATE database books"""
 
     cursor.execute(sql)
     print('Database created successfully.........')
