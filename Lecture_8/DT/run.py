@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from datatables import column_dt, datatables
+from datatables import ColumnDT, DataTables
 import datetime
 import random
 app = Flask(__name__)
@@ -22,13 +22,13 @@ def index() :
 @app.route('/load_table_sql', methods=['GET', 'POST'])
 def load_table_sql() :
     columns = [
-        column_dt(User.id),
-        column_dt(User.name),
-        column_dt(User.phone),
-        column_dt(User.birthday),
+        ColumnDT(User.id),
+        ColumnDT(User.name),
+        ColumnDT(User.phone),
+        ColumnDT(User.birthday),
     ]
     query = db.session.query().select_from(User)
-    rowTable = datatables.DataTables(request.args.to_dict(), query, columns)
+    rowTable = DataTables(request.args.to_dict(), query, columns)
     # returns what is needed by DataTable
     return rowTable.output_result()
     
@@ -45,13 +45,12 @@ def random_date() :
 
 def create_db_user() :
     db.create_all()
-    for i in range(10) :
+    for i in range(100) :
         user = User(name='user'+str(i), phone='phone' + 
                     str(i), birthday=random_date())
         db.session.add(user)
     db.session.commit()
     print('create done')
-    show_db_user()
 
 if __name__ == "__main__" :
-    app.run( debug=True)
+    app.run(host='0.0.0.0', debug=True)
