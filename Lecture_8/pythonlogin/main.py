@@ -9,12 +9,12 @@ app.secret_key = 'INE@2562'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = 'Mac126218'
 app.config['MYSQL_DB'] = 'pythonlogin'
 
 mysql = MySQL(app)
 
-@app.route('/pythonlogin/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     # Output message if something goes wrong...
     msg = ''
@@ -42,7 +42,7 @@ def login():
     # Show the login form with message (if any)
     return render_template('index.html', msg=msg)
 
-@app.route('/pythonlogin/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     # Output message if something goes wrong...
     msg = ''
@@ -77,7 +77,7 @@ def register():
     # Show registration form with message (if any)
     return render_template('register.html', msg=msg)
 
-@app.route('/pythonlogin/home')
+@app.route('/home')
 def home():
     # Check if user is loggedin
     if 'loggedin' in session:
@@ -86,7 +86,7 @@ def home():
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
-@app.route('/pythonlogin/profile')
+@app.route('/profile')
 def profile():
     # Check if user is loggedin
     if 'loggedin' in session:
@@ -98,3 +98,6 @@ def profile():
         return render_template('profile.html', account=account)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
+
+if __name__ == '__main__' :
+    app.run(debug=True)
