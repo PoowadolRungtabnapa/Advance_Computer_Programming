@@ -56,7 +56,7 @@ if __name__ == "__main__" :
     format = "%(asctime)s: %(message)s"
     logging.basicConfig(format=format, level=logging.INFO,
                         datefmt="%H:%M:%S")
-    # logging.getLogger().setLevel(logging.DEEBUG)
+    logging.getLogger().setLevel(logging.DEBUG)
 
     pipeline = Pipeline()
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor :

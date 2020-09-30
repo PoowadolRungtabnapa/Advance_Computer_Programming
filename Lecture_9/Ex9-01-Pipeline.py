@@ -28,11 +28,14 @@ def consumer(pipeline, event) :
 
 class Pipeline(queue.Queue) :
     def __init__(self) :
-        super().__init__(maxsize=10)
+        super().__init__(maxsize=4)
 
     def get_message(self, name) :
         logging.debug("%s:about to get from queue", name)
         value = self.get()
+        logging.debug("%s:got to add %d to queue", name, value)
+        return value
+    def set_message(self, value, name) :
         logging.debug("%s:about to add %d to queue", name, value)
         self.put(value)
         logging.debug("%s:added %d to queue", name, value)
@@ -41,7 +44,7 @@ if __name__ == "__main__" :
     format = "%(asctime)s: %(message)s"
     logging.basicConfig(format=format, level=logging.INFO,
                         datefmt="%H:%M:%S")
-    logging.getLogger().setLevel(logging.DEBUG)
+    # logging.getLogger().setLevel(logging.DEBUG)
 
     pipeline = Pipeline()
     event = threading.Event()
@@ -49,6 +52,6 @@ if __name__ == "__main__" :
         executor.submit(producer, pipeline, event)
         executor.submit(consumer, pipeline, event)
 
-        time.sleep(0.1)
+        time.sleep(0.000000001)
         logging.info("Main: about to set event")
         event.set()
