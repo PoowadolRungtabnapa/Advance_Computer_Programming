@@ -5,12 +5,11 @@ Base = declarative_base()
 
 class Member(Base) :
     __tablename__ = 'member'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(String(100), nullable=False)
-    description = Column(Text, nullable=False)
-    join_date = Column(DateTime, nullable=False) 
-    vip = Column(Boolean, nullable=False)
-    number = Column(Float, nullable=False)
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100), unique=True)
+    description = Column(String(100), nullable=False)
+    price = Column(Float, nullable=False)
+    qty = Column(Integer, nullable=False)
 
     def __repr__(self):
         return '<UserModel model {}>'.format(self.id)
