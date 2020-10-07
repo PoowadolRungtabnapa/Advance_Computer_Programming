@@ -4,21 +4,16 @@ from flask_marshmallow import Marshmallow
 import os
 
 app = Flask(__name__)
-'''
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-app.config['SQLALCHEMY_DATABASE_URL'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-@app.route('/', methods=['GET'])
-def get() :
-    return jsonify({'ms' : 'Hello World'})
-
 
 db = SQLAlchemy(app)
 
 ma = Marshmallow(app)
-
+# Create DataBase
 class Product(db.Model) :
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
@@ -54,18 +49,20 @@ def add_product() :
 
     return product_schema.jsonify(new_product)
 
+
 @app.route('/product', methods=['GET'])
 def get_products() :
     all_products = Product.query.all()
     result = products_schema.dump(all_products)
     return jsonify(result)
 
+
 @app.route('/product/<id>', methods=['GET'])
 def get_product(id) :
     product = Product.query.get(id)
     return product_schema.jsonify(product)
 
-@app.route('/product/<id>', methods=['PUT])
+@app.route('/product/<id>', methods=['PUT'])
 def update_product(id) :
     product = Product.query.get(id)
 
@@ -83,6 +80,13 @@ def update_product(id) :
 
     return product_schema.jsonify(product)
 
-'''
+@app.route('/product/<id>', methods=['DELETE'])
+def delete_product(id) :
+    product = Product.query.get(id)
+    db.session.delete(product)
+    db.session.commit()
+
+    return product_schema.jsonify(product)
+
 if __name__ == "__main__" :
     app.run(debug=True)
